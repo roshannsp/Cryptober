@@ -1,0 +1,239 @@
+{
+    "defaultEmbed": {
+        "color": "#0099ff"
+    },
+    "embeds": {
+        "displays": {
+            "welcome": {
+                "title": "Thank you for using {{REF:bot.name}}!",
+                "description": ["{{REF:bot.description}}"],
+                "fields": [
+                    {
+                        "name": "Important {{REF:fields.commands}}",
+                        "value": ["**{{REF:bot.prefix}} {{REF:commands.help}}** - View bot help."]
+                    },
+                    {
+                        "name": "{{REF:fields.links}}",
+                        "value": [
+                            "{{REF:links.docsEmbed}}",
+                            "{{REF:links.supportEmbed}}",
+                            "{{REF:links.inviteEmbed}}"
+                        ]
+                    }
+                ]
+            },
+            "help": {
+                "title": "{{REF:bot.name}} - Help",
+                "description": "{{REF:bot.description}}",
+                "fields": [
+                    {
+                        "name": "{{REF:fields.commands}}",
+                        "value": [
+                            "**{{REF:bot.prefix}} {{REF:commands.test}}** - Run the test command.",
+                            "**{{REF:bot.prefix}} {{REF:commands.info}}** - More information about {{REF:bot.name}}."
+                        ]
+                    },
+                    {
+                        "name": "{{REF:fields.links}}",
+                        "value": [
+                            "{{REF:links.docsEmbed}}",
+                            "{{REF:links.supportEmbed}}",
+                            "{{REF:links.inviteEmbed}}"
+                        ]
+                    }
+                ]
+            },
+            "test": {
+                "description": "Test command works!"
+            },
+            "info": {
+                "title": "{{REF:bot.name}} - Info",
+                "fields": [
+                    { "name": "Author", "value": "{{REF:links.authorEmbed}}" },
+                    {
+                        "name": "{{REF:fields.links}}",
+                        "value": [
+                            "{{REF:links.sourceEmbed}}",
+                            "{{REF:links.docsEmbed}}",
+                            "{{REF:links.supportEmbed}}",
+                            "{{REF:links.inviteEmbed}}"
+                        ]
+                    },
+                    {
+                        "name": "Created With",
+                        "value": ["{{REF:links.templateEmbed}}"]
+                    }
+                ]
+            },
+            "translate": {
+                "title": "{{REF:bot.name}} - Translations",
+                "description": "Thank you to our translators who have made it possible for {{REF:bot.name}} to be used in the following languages. If you are interested in providing a translation, please contact the staff in our [support server]({{REF:links.support}})."
+            },
+            "dev": {
+                "title": "{{REF:bot.name}} - Developer Info",
+                "fields": [
+                    {
+                        "name": "Versions",
+                        "value": [
+                            "**Node.js**: {{NODE_VERSION}}",
+                            "**TypeScript**: {{TS_VERSION}}",
+                            "**ECMAScript**: {{ES_VERSION}}",
+                            "**discord.js-light**: {{DJS_VERSION}}"
+                        ]
+                    },
+                    {
+                        "name": "Stats",
+                        "value": [
+                            "**Shards**: {{SHARD_COUNT}}",
+                            "**Servers**: {{SERVER_COUNT}} ({{SERVER_COUNT_PER_SHARD}}/Shard)"
+                        ]
+                    },
+                    {
+                        "name": "Memory",
+                        "value": [
+                            "**RSS**: {{RSS_SIZE}} ({{RSS_SIZE_PER_SERVER}}/Server)",
+                            "**Heap**: {{HEAP_TOTAL_SIZE}} ({{HEAP_TOTAL_SIZE_PER_SERVER}}/Server)",
+                            "**Used**: {{HEAP_USED_SIZE}} ({{HEAP_USED_SIZE_PER_SERVER}}/Server)"
+                        ]
+                    },
+                    {
+                        "name": "IDs",
+                        "value": [
+                            "**Shard ID**: {{SHARD_ID}}",
+                            "**Server ID**: {{SERVER_ID}}",
+                            "**Bot ID**: {{BOT_ID}}",
+                            "**User ID**: {{USER_ID}}"
+                        ]
+                    }
+                ]
+            },
+            "invite": {
+                "title": "{{REF:bot.name}} - Invite",
+                "description": "Click [here]({{REF:links.invite}}) to invite {{REF:bot.name}} to a server!"
+            },
+            "docs": {
+                "title": "{{REF:bot.name}} - Documentation",
+                "description": "Click [here]({{REF:links.docs}}/) to view the bot documentation."
+            },
+            "vote": {
+                "title": "{{REF:bot.name}} - Vote",
+                "description": "Support {{REF:bot.name}} by voting [here]({{REF:links.vote}})!"
+            },
+            "support": {
+                "title": "{{REF:bot.name}} - Support",
+                "description": "Need help? Join our [support server]({{REF:links.support}})!"
+            }
+        },
+        "validation": {
+            "serverOnlyCommand": {
+                "description": "This command can only be used in a server.",
+                "color": "{{REF:colors.warning}}"
+            },
+            "permissionRequired": {
+                "description": "You don't have permission to run that command!",
+                "color": "{{REF:colors.warning}}"
+            }
+        },
+        "errors": {
+            "command": {
+                "description": "Something went wrong!",
+                "fields": [
+                    {
+                        "name": "Error code",
+                        "value": "{{ERROR_CODE}}"
+                    },
+                    {
+                        "name": "Contact support",
+                        "value": "{{REF:links.support}}"
+                    }
+                ],
+                "color": "{{REF:colors.error}}"
+            },
+            "startupInProcess": {
+                "description": "{{REF:bot.name}} is still starting up. Try again later.",
+                "color": "{{REF:colors.warning}}"
+            }
+        }
+    },
+    "regexes": {
+        "meta": {
+            "language": "/\\b({{REF:meta.language}}|en Pirate|Pirate)\\b/i"
+        },
+        "channels": {
+            "bot": "/bot|command|cmd/i"
+        },
+        "commands": {
+            "dev": "/\\b({{REF:commands.dev}}|developer|usage|memory|mem)\\b/i",
+            "docs": "/\\b({{REF:commands.docs}}|d|documentation|readme|website|site)\\b/i",
+            "help": "/\\b({{REF:commands.help}}|h|\\?)\\b/i",
+            "info": "/\\b({{REF:commands.info}}|i|information)\\b/i",
+            "invite": "/\\b({{REF:commands.invite}})\\b/i",
+            "support": "/\\b({{REF:commands.support}}|s)\\b/i",
+            "test": "/\\b({{REF:commands.test}}|t)\\b/i",
+            "translate": "/\\b({{REF:commands.translate}}|t|translation|translations|lang|langs|language|languages)\\b/i",
+            "vote": "/\\b({{REF:commands.vote}}|v)\\b/i"
+        }
+    },
+    "refs": {
+        "meta": {
+            "language": "en-Pirate",
+            "languageDisplay": "Pirate",
+            "translators": "[TranslatorName#1234](https://github.com/)"
+        },
+        "bot": {
+            "name": "My Bot",
+            "description": "{{REF:links.templateEmbed}} helps give developers a starting point for new Discord bots, so that much of the initial setup can be avoided and developers can instead focus on meaningful bot features.",
+            "prefix": "bot"
+        },
+        "colors": {
+            "success": "00ff83",
+            "warning": "ffcc66",
+            "error": "#ff4a4a"
+        },
+        "commands": {
+            "dev": "dev",
+            "docs": "docs",
+            "help": "help",
+            "info": "info",
+            "invite": "invite",
+            "support": "support",
+            "test": "test",
+            "translate": "translate",
+            "vote": "vote"
+        },
+        "lists": {
+            "languageItem": "**{{LANGUAGE_NAME}}** (`{{LANGUAGE_KEYWORD}}`)"
+        },
+        "fields": {
+            "commands": "Commands",
+            "links": "Links"
+        },
+        "other": {
+            "na": "N/A"
+        },
+        "links": {
+            "invite": "https://discord.com/",
+            "inviteEmbed": "[Invite {{REF:bot.name}} to a Server!]({{REF:links.invite}})",
+            "docs": "https://top.gg/",
+            "docsEmbed": "[View Documentation]({{REF:links.docs}})",
+            "vote": "https://top.gg/",
+            "voteEmbed": "[Vote for {{REF:bot.name}}!]({{REF:links.vote}})",
+            "support": "https://support.discord.com/",
+            "supportEmbed": "[Join Support Server]({{REF:links.support}})",
+            "stream": "https://www.twitch.tv/novakevin",
+            "author": "https://github.com/",
+            "authorEmbed": "[My Name]({{REF:links.author}})",
+            "source": "https://github.com/",
+            "sourceEmbed": "[View Source Code]({{REF:links.source}})",
+            "template": "https://github.com/KevinNovak/Discord-Bot-TypeScript-Template",
+            "templateEmbed": "[Discord Bot TypeScript Template]({{REF:links.template}})"
+        },
+        "messages": {
+            "missingEmbedPerms": [
+                "I don't have all permissions required to send messages here!",
+                "",
+                "Please allow me to **View Channel**, **Send Messages**, and **Embed Links** in this channel."
+            ]
+        }
+    }
+}
