@@ -23,7 +23,7 @@ export class UpdateServerCountJob implements Job {
     public async run(): Promise<void> {
         let serverCount = await ShardUtils.serverCount(this.shardManager);
 
-        let type: ActivityType = 'STREAMING';
+        let type: ActivityType = 'ONLINE';
         let name = `to ${serverCount.toLocaleString()} servers`;
         let url = Lang.getRef('links.stream', Lang.Default);
 

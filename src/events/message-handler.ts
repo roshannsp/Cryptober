@@ -24,12 +24,14 @@ export class MessageHandler implements EventHandler {
 
         // Process command
         let args = msg.content.split(' ');
-        if (this.commandHandler.shouldHandle(msg, args)) {
+        // if (this.commandHandler.shouldHandle(msg, args)) {
+        if (msg.content.startsWith('!price')) {
             await this.commandHandler.process(msg, args);
             return;
         }
+        // }
 
         // Process triggers
-        await this.triggerHandler.process(msg, args);
+        // await this.triggerHandler.process(msg, args);
     }
 }

@@ -43,8 +43,8 @@
                     }
                 ]
             },
-            "test": {
-                "description": "Test command works!"
+            "price": {
+                "title": "{{REF:bot.name}} - Price"
             },
             "info": {
                 "title": "{{REF:bot.name}} - Info",
@@ -181,7 +181,7 @@
             "translators": "[TranslatorName#1234](https://github.com/)"
         },
         "bot": {
-            "name": "My Bot",
+            "name": "Cryptober",
             "description": "{{REF:links.templateEmbed}} helps give developers a starting point for new Discord bots, so that much of the initial setup can be avoided and developers can instead focus on meaningful bot features.",
             "prefix": "bot"
         },

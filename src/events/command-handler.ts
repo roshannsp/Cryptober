@@ -52,13 +52,13 @@ export class CommandHandler {
         }
 
         // If only a prefix, run the help command
-        if (args.length === 1) {
-            await this.helpCommand.execute(msg, args, data);
-            return;
-        }
+        // if (args.length === 1) {
+        //     await this.helpCommand.execute(msg, args, data);
+        //     return;
+        // }
 
         // Try to find the command the user wants
-        let command = this.find(args[1], data.lang());
+        let command = this.find(args[0], data.lang());
 
         // If no command found, run the help command
         if (!command) {
