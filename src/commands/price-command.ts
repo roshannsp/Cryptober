@@ -31,7 +31,7 @@ export class PriceCommand implements Command {
                     params: { symbol: symbol + 'BUSD' },
                 })
             );
-            const bitkubPromises = binanceSymbols.map((symbol: string) =>
+            const bitkubPromises = bitkubSymbols.map((symbol: string) =>
                 axios.get('https://api.bitkub.com/api/market/ticker', {
                     params: { sym: 'THB_' + symbol },
                 })
@@ -54,12 +54,7 @@ export class PriceCommand implements Command {
                     )}$ ${arrow} ${Math.abs(priceChange)}%`;
                 });
                 const bitkubValues = bitkubResults.map((result, i) => {
-                    console.log('i: ', i);
-                    console.log('bitkubSymbols: ', bitkubSymbols);
-                    console.log('bitkubSymbols[i]: ', bitkubSymbols[i]);
                     const symbol = 'THB_' + bitkubSymbols[i];
-                    console.log('symbol: ', symbol);
-                    console.log('result.data: ', result.data);
                     const data = result.data[symbol];
                     const priceChange = +data.percentChange;
                     const chart = `https://www.bitkub.com/market/${bitkubSymbols[i]}`;
