@@ -54,6 +54,7 @@ export class PriceCommand implements Command {
                     )}$ ${arrow} ${Math.abs(priceChange)}%`;
                 });
                 const bitkubValues = bitkubResults.map((result, i) => {
+                    console.log('i: ', i);
                     console.log('bitkubSymbols: ', bitkubSymbols);
                     console.log('bitkubSymbols[i]: ', bitkubSymbols[i]);
                     const symbol = 'THB_' + bitkubSymbols[i];
