@@ -44,12 +44,12 @@ export class PriceCommand implements Command {
 
                 const binanceValues = binanceResults.map((result, i) => {
                     const priceChange = +result.data.priceChangePercent;
-                    const chart = `https://th.tradingview.com/chart/?symbol=${result.data.symbol}`;
+                    const chart = `https://www.binance.com/en/trade/${result.data.symbol}_BUSD`;
                     let arrow = ':arrow_down:';
                     if (priceChange >= 0) {
                         arrow = ':arrow_up:';
                     }
-                    return `[${result.data.symbol}](${chart})\t= ${(+result.data.lastPrice).toFixed(
+                    return `[Binance](${chart})\t= ${(+result.data.lastPrice).toFixed(
                         3
                     )}$ ${arrow} ${Math.abs(priceChange)}%`;
                 });
@@ -62,12 +62,13 @@ export class PriceCommand implements Command {
                     if (priceChange >= 0) {
                         arrow = ':arrow_up:';
                     }
-                    return `[${symbol}](${chart})\t= ${+data.last}฿ ${arrow} ${Math.abs(
+                    return `[Bitkub](${chart})\t= ${+data.last}฿ ${arrow} ${Math.abs(
                         priceChange
                     )}%`;
                 });
                 const values = [];
                 for (const [i, value] of binanceValues.entries()) {
+                    values.push(binanceSymbols[i]);
                     values.push(value);
                     if (i < bitkubValues.length) {
                         values.push(bitkubValues[i]);
