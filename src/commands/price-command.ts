@@ -7,7 +7,7 @@ import { Command } from './command';
 import axios from 'axios';
 import { Lang } from '../services';
 
-const symbols = ['BTC', 'ETH', 'UNI', 'BNB', 'CAKE'];
+const symbols = ['BTC', 'ETH', 'UNI', 'XRP', 'BNB', 'CAKE'];
 
 export class PriceCommand implements Command {
     public requireGuild = false;
