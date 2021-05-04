@@ -74,7 +74,9 @@ export class PriceCommand implements Command {
                         values.push(bitkubValues[i]);
                     }
                 }
-                fields.push({ name: 'Price List', value: values });
+                for (let i = 0; i < values.length; i += 6) {
+                    fields.push({ name: '', value: values.slice(i, i + 6) });
+                }
                 embed.fields = fields;
                 await MessageUtils.send(msg.channel, embed);
                 return;
