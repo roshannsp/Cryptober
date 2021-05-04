@@ -33,7 +33,7 @@ export class PriceCommand implements Command {
             );
             const bitkubPromises = binanceSymbols.map((symbol: string) =>
                 axios.get('https://api.bitkub.com/api/market/ticker', {
-                    params: { symbol: 'THB_' + symbol },
+                    params: { sym: 'THB_' + symbol },
                 })
             );
             try {
@@ -77,7 +77,8 @@ export class PriceCommand implements Command {
                 embed.fields = fields;
                 await MessageUtils.send(msg.channel, embed);
                 return;
-            } catch {
+            } catch (error) {
+                console.log('error: ', error);
                 message = 'Unrecognized Symbol';
             }
         } else {
@@ -90,7 +91,8 @@ export class PriceCommand implements Command {
                 } else {
                     message = 'Unrecognized Symbol';
                 }
-            } catch {
+            } catch (error) {
+                console.log(error);
                 message = 'Unrecognized Symbol';
             }
         }
