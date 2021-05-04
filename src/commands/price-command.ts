@@ -62,7 +62,7 @@ export class PriceCommand implements Command {
                     if (priceChange >= 0) {
                         arrow = ':arrow_up:';
                     }
-                    return `[${symbol}](${chart})\t= ${+result.data.last}฿ ${arrow} ${Math.abs(
+                    return `[${symbol}](${chart})\t= ${+data.last}฿ ${arrow} ${Math.abs(
                         priceChange
                     )}%`;
                 });
