@@ -44,7 +44,7 @@ export class PriceCommand implements Command {
 
                 const binanceValues = binanceResults.map((result, i) => {
                     const priceChange = +result.data.priceChangePercent;
-                    const chart = `https://www.binance.com/en/trade/${result.data.symbol}_BUSD`;
+                    const chart = `https://www.binance.com/en/trade/${binanceSymbols[i]}_BUSD`;
                     let arrow = ':arrow_down:';
                     if (priceChange >= 0) {
                         arrow = ':arrow_up:';
