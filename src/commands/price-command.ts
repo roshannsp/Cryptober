@@ -7,7 +7,8 @@ import { Command } from './command';
 import axios from 'axios';
 import { Lang } from '../services';
 
-const symbols = ['BTC', 'ETH', 'UNI', 'XRP', 'BNB', 'CAKE'];
+const binanceSymbols = ['BTC', 'ETH', 'UNI', 'XRP', 'BNB', 'CAKE'];
+const bitkubSymbols = ['BTC', 'ETH', 'UNI', 'XRP', 'BNB'];
 
 export class PriceCommand implements Command {
     public requireGuild = false;
@@ -25,29 +26,53 @@ export class PriceCommand implements Command {
         let message: string;
 
         if (args.length === 1) {
-            const promises = symbols.map((symbol: string) =>
+            const binancePromises = binanceSymbols.map((symbol: string) =>
                 axios.get('https://api.binance.com/api/v3/ticker/24hr', {
                     params: { symbol: symbol + 'BUSD' },
                 })
             );
+            const bitkubPromises = binanceSymbols.map((symbol: string) =>
+                axios.get('https://api.bitkub.com/api/market/ticker', {
+                    params: { symbol: 'THB_' + symbol },
+                })
+            );
             try {
-                const results = await Promise.all(promises);
+                const binanceResults = await Promise.all(binancePromises);
+                const bitkubResults = await Promise.all(bitkubPromises);
                 const embed = Lang.getEmbed('displays.price', data.lang());
                 const fields = [];
 
-                const values = results
-                    .map((result, i) => {
-                        const priceChange = +result.data.priceChangePercent;
-                        const chart = `https://th.tradingview.com/chart/?symbol=${result.data.symbol}`;
-                        let arrow = ':arrow_down:';
-                        if (priceChange >= 0) {
-                            arrow = ':arrow_up:';
-                        }
-                        return `[${symbols[i]}](${chart})\t= ${(+result.data.lastPrice).toFixed(
-                            3
-                        )}$ ${arrow} ${Math.abs(priceChange)}%`;
-                    })
-                    .join('\n');
+                const binanceValues = binanceResults.map((result, i) => {
+                    const priceChange = +result.data.priceChangePercent;
+                    const chart = `https://th.tradingview.com/chart/?symbol=${result.data.symbol}`;
+                    let arrow = ':arrow_down:';
+                    if (priceChange >= 0) {
+                        arrow = ':arrow_up:';
+                    }
+                    return `[${result.data.symbol}](${chart})\t= ${(+result.data.lastPrice).toFixed(
+                        3
+                    )}$ ${arrow} ${Math.abs(priceChange)}%`;
+                });
+                const bitkubValues = bitkubResults.map((result, i) => {
+                    const symbol = 'THB_' + bitkubSymbols[i];
+                    const data = result.data[symbol];
+                    const priceChange = +data.percentChange;
+                    const chart = `https://www.bitkub.com/market/${bitkubSymbols[i]}`;
+                    let arrow = ':arrow_down:';
+                    if (priceChange >= 0) {
+                        arrow = ':arrow_up:';
+                    }
+                    return `[${symbol}](${chart})\t= ${+result.data.last}฿ ${arrow} ${Math.abs(
+                        priceChange
+                    )}%`;
+                });
+                const values = [];
+                for (const [i, value] of binanceValues.entries()) {
+                    values.push(value);
+                    if (i < bitkubValues.length) {
+                        values.push(bitkubValues[i]);
+                    }
+                }
                 fields.push({ name: 'Price List', value: values });
                 embed.fields = fields;
                 await MessageUtils.send(msg.channel, embed);
