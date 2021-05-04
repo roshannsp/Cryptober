@@ -55,6 +55,8 @@ export class PriceCommand implements Command {
                 });
                 const bitkubValues = bitkubResults.map((result, i) => {
                     const symbol = 'THB_' + bitkubSymbols[i];
+                    console.log('symbol: ', symbol);
+                    console.log('result.data: ', result.data);
                     const data = result.data[symbol];
                     const priceChange = +data.percentChange;
                     const chart = `https://www.bitkub.com/market/${bitkubSymbols[i]}`;
