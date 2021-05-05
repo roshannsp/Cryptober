@@ -66,16 +66,13 @@ export class PriceCommand implements Command {
                         priceChange
                     )}%`;
                 });
-                const values = [];
                 for (const [i, value] of binanceValues.entries()) {
-                    values.push(binanceSymbols[i]);
+                    const values = [];
                     values.push(value);
                     if (i < bitkubValues.length) {
                         values.push(bitkubValues[i]);
                     }
-                }
-                for (let i = 0; i < values.length; i += 6) {
-                    fields.push({ name: '-', value: values.slice(i, i + 6) });
+                    fields.push({ name: binanceSymbols[i], value: values });
                 }
                 embed.fields = fields;
                 await MessageUtils.send(msg.channel, embed);
